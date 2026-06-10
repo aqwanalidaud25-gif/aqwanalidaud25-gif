@@ -2,7 +2,10 @@
 ![Aqwan Ali](img/github-header-banner.png)
 
 
-- 🌱 I’m currently learning *Node.js and react.js*
+- 🔭 I’m currently working on web development projects and expanding my portfolio.
+- 🌱 I’m currently learning **Backend Development & Database Design**.
+- 👥 I’m open to collaboration on Frontend projects or open-source initiatives.
+- ⚡ Fun fact: I enjoy exploring IoT microcontrollers and UI/UX design trends in my spare time.
 
 ##### Skills
 
