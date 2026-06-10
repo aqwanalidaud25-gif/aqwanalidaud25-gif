@@ -1,8 +1,8 @@
-name: Generate arcade animation
+name: Generate Snake Animation
 
 on:
-  schedule: # Mengeksekusi setiap 12 jam sekali secara tepat
-    - cron: "0 */12 * * *"
+  schedule:
+    - cron: "0 */12 * * *" # Berjalan setiap 12 jam
 
   workflow_dispatch:
 
@@ -15,27 +15,29 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
 
     steps:
-      # Langkah 1: Ambil data repositori terlebih dahulu (Penting agar sistem membaca direktori kerja)
+      # Langkah 1: Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Langkah 2: Generate grafik animasi arcade
-      - name: generate pacman-contribution-graph.svg
-        uses: abozanona/pacman-contribution-graph@main
+      # Langkah 2: Generate animasi ular berdasarkan kontribusi GitHub Anda
+      - name: Generate github-contribution-grid-snake.svg
+        uses: platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          games: 'galaga'
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ini ditambahkan agar sistem bisa membaca data kontribusi Anda
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Langkah 3: Push hasilnya ke branch output
-      - name: push galaga-contribution-graph.svg to the output branch
+      # Langkah 3: Push hasilnya ke branch 'output'
+      - name: Push SVG to Output Branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          target_branch: pacman-output
+          target_branch: pacman-output # Tetap menggunakan nama branch ini agar Anda tidak perlu mengubah setelan lain
           build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
