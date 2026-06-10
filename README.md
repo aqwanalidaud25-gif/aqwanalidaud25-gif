@@ -1,4 +1,4 @@
-### Hello word! I'm Aqwan Ali👋
+
 ![Aqwan Ali](img/github-header-banner.png)
 
 
